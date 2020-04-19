@@ -154,6 +154,25 @@
 
         targetElement.appendChild(rowElement);
       }
+
+      if (!this.team1.getRemainingPieces() || !this.team2.getRemainingPieces()) {
+        // Render the "You won" overlay
+        var teamWonBanner = document.createElement('div')
+        teamWonBanner.classList.add('gameboard-team-win')
+
+        var teamWonText = document.createElement('span');
+
+        if (!this.team1.getRemainingPieces()) {
+          teamWonText.innerText = 'The red';
+        } else {
+          teamWonText.innerText = 'The black';
+        }
+
+        teamWonText.innerText = teamWonText.innerText + ' team has won. Please refresh for another game';
+
+        teamWonBanner.appendChild(teamWonText);
+        targetElement.appendChild(teamWonBanner);
+      }
     }
   }
 
