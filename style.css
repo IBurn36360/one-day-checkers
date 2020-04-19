@@ -1,12 +1,14 @@
 body {
     padding: 0 10px;
     margin: 0;
+    background: #2f2b2b;
 }
 
 #gameboard {
     margin: 10px auto;
     border: 3px solid;
     max-width: 90vh;
+    background: #FFF;
 }
 
 .gameboard-row {
@@ -23,7 +25,7 @@ body {
 }
 
 .gameboard-tile.active {
-    background: #0F0;
+    background: #069006;
 }
 
 .gameboard-tile::after {
@@ -81,13 +83,24 @@ body {
 }
 
 .team-display.is-going {
-    background: #0F0;
+    background: #a0ce57;
 }
 
 .gameboard-tile.is-valid-move {
-    background: #00F;
+    background: #4b9bd4;
 }
 
 .gameboard-tile.is-valid-capture {
-    background: #FF0;
+    background: #a0ce57;
+}
+
+.gameboard-piece.gameboard-piece-king::after {
+    content: "K";
+    color: #FFFFFF;
+    font-size: 3em;
+    font-family: monospace;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

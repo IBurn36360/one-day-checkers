@@ -88,6 +88,9 @@
       tile.setPiece(this.gameboard[tile.validMoveFrom[0]][tile.validMoveFrom[1]].piece);
       this.gameboard[tile.validMoveFrom[0]][tile.validMoveFrom[1]].setPiece(null);
 
+      // Have the piece check to see if they are now a king
+      tile.piece.checkIfKing(tile.rowIndex);
+
       this.clearActive();
       this.clearValidMoves();
       this.render();
@@ -105,6 +108,9 @@
       // Now remove and change the piece to captured
       this.gameboard[capturedPieceY][capturedPieceX].piece.isCaptured = true
       this.gameboard[capturedPieceY][capturedPieceX].setPiece(null)
+
+      // Have the piece check to see if they are now a king
+      tile.piece.checkIfKing(tile.rowIndex);
 
       this.clearActive();
       this.clearValidMoves();
@@ -263,6 +269,10 @@
 
       pieceElement.classList.add('gameboard-piece');
       pieceElement.classList.add('gameboard-piece-' + this.team.teamColor);
+
+      if (this.isKing) {
+        pieceElement.classList.add('gameboard-piece-king');
+      }
 
       return pieceElement;
     }
@@ -453,6 +463,16 @@
       }
 
       this.gameBoard.render();
+    }
+
+    checkIfKing(row) {
+      if (this.team.teamColor === 'black') {
+        if (row === (GameBoard.GAME_BOARD_HEIGHT - 1)) {
+          this.isKing = true;
+        }
+      } else if (row === 0) {
+        this.isKing = true;
+      }
     }
 
     setIsCaptured() {
