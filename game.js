@@ -157,8 +157,8 @@
 
       if (!this.team1.getRemainingPieces() || !this.team2.getRemainingPieces()) {
         // Render the "You won" overlay
-        var teamWonBanner = document.createElement('div')
-        teamWonBanner.classList.add('gameboard-team-win')
+        var teamWonBanner = document.createElement('div');
+        teamWonBanner.classList.add('gameboard-team-win');
 
         var teamWonText = document.createElement('span');
 
