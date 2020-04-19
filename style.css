@@ -1,0 +1,93 @@
+body {
+    padding: 0 10px;
+    margin: 0;
+}
+
+#gameboard {
+    margin: 10px auto;
+    border: 3px solid;
+    max-width: 90vh;
+}
+
+.gameboard-row {
+    display: flex;
+}
+
+.gameboard-tile {
+    display: block;
+    flex-basis: 1px;
+    flex-grow: 1;
+    flex-shrink: 0;
+    border: 1px solid rgba(0, 0, 0, .2);
+    position: relative;
+}
+
+.gameboard-tile.active {
+    background: #0F0;
+}
+
+.gameboard-tile::after {
+    display: block;
+    content: '';
+    padding-top: 100%;
+}
+
+.gameboard-tile:active, .gameboard-tile.is-selected {
+    background: rgba(0, 0, 0, .3);
+    transition: .2s ease-out;
+}
+
+.gameboard-tile.gameboard-tile-black {
+    background: #222;
+}
+
+.gameboard-piece {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    border: 2px solid #999;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.gameboard-piece.gameboard-piece-black {
+    background: #333;
+}
+
+.gameboard-piece.gameboard-piece-red {
+    background: #990000;
+}
+
+.gameboard-teams {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.team-display {
+    flex-basis: 100px;
+    flex-grow: 1;
+    flex-shrink: 0;
+    padding: 4px;
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.team-display:not(:last-child) {
+    border-right: 2px solid rgba(0, 0, 0, .3);
+}
+
+.team-display.is-going {
+    background: #0F0;
+}
+
+.gameboard-tile.is-valid-move {
+    background: #00F;
+}
+
+.gameboard-tile.is-valid-capture {
+    background: #FF0;
+}
