@@ -133,6 +133,8 @@
     }
 
     render() {
+      console.log(this);
+
       var targetElement = document.getElementById('gameboard');
 
       // Clear the previous render...Will replace these all with tile elements that can do pinpoint updates maybe
