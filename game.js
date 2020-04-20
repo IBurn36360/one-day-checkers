@@ -1,6 +1,9 @@
 (function(){
   var GameBoard = class {
-    constructor() {
+    constructor(firstTeam, gameWidth, gameHeight) {
+      GameBoard.GAME_BOARD_HEIGHT = Number(gameHeight) || 8;
+      GameBoard.GAME_BOARD_WIDTH = Number(gameWidth) || 8;
+
       this.gameboard = [];
       this.pieceLockEnabled = false;
 
@@ -33,7 +36,12 @@
         this.gameboard.push(gameRow);
       }
 
-      this.team1.teamIsGoing = true;
+      if (firstTeam === '1') {
+        this.team1.teamIsGoing = true;
+      } else {
+        this.team2.teamIsGoing = true;
+      }
+
 
       this.render();
     }
@@ -445,13 +453,6 @@
         }
       }
 
-      console.log({
-        hasMoved,
-        validMoves,
-        validCaptures,
-        occupiedLocations,
-      });
-
       // Go to each tile and set up the state they need to be in
       if (!hasCaptured) {
         for (var validMove in validMoves) {
@@ -558,7 +559,5 @@
     }
   }
 
-  console.log([
-    new GameBoard(),
-  ]);
+  window.GameBoard = GameBoard;
 }())

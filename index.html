@@ -2,11 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Checkers</title>
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <main id="gameboard"></main>
+    <main id="gameboard">
+        <form>
+            <h2>Which team will start the game?</h2>
+            <div class="game-setup-team-select">
+                <label for="first-team-black">Black</label>
+                <input id="first-team-black" type="radio" name="firstTeam" value="1" checked />
+                <span class="team-selector-toggle"></span>
+                <label for="first-team-red">Red</label>
+                <input id="first-team-red" type="radio" name="firstTeam" value="2" />
+            </div>
+            <h2>Please select a gameboard size</h2>
+            <div class="game-setup-width">
+                <label for="game-width">Width</label>
+                <input id="game-width" name="gameWidth" type="number" min="4" max="40" value="8">
+            </div>
+            <div class="game-setup-height">
+                <label for="game-height">Height</label>
+                <input id="game-height" name="gameHeight" type="number" min="4" max="40" value="8">
+            </div>
+            <button type="button" onclick="new window.GameBoard(document.querySelector('[name=\'firstTeam\']:checked').value, document.getElementById('game-width').value, document.getElementById('game-height').value)">Start Game</button>
+        </form>
+    </main>
     <script src="./game.js"></script>
 </body>
 </html>
