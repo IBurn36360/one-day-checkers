@@ -241,22 +241,22 @@
       } else if (!this.gameBoard.pieceLockEnabled) {
         if (this.piece && this.piece.team.teamIsGoing) {
           if (this.isActive) {
-            this.setActive(false);
+            this.gameBoard.clearActive();
+            this.gameBoard.clearValidMoves();
           } else {
             // Tell the gameboard to clear active on all tiles
             this.gameBoard.clearActive();
+            this.gameBoard.clearValidMoves();
 
             this.setActive(true);
+
+            this.piece.setStateForValidMoves(this.rowIndex, this.columnIndex);
           }
-
-          this.piece.setStateForValidMoves(this.rowIndex, this.columnIndex);
-
-          this.gameBoard.render();
         } else {
           this.gameBoard.clearActive();
-
-          this.gameBoard.render();
         }
+
+        this.gameBoard.render();
       }
     }
 
