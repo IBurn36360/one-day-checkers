@@ -154,6 +154,9 @@
       // Have the piece check to see if they are now a king
       tile.piece.checkIfKing(tile.rowIndex);
 
+      // Moves end the turn of this team, so swap the teams
+      this.changeTeamGoing();
+
       this.clearActive();
       this.clearValidMoves();
       this.render();
